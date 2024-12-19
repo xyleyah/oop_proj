@@ -16,12 +16,12 @@ public class AdminDashboardPanel extends JPanel {
         this.approvedListModel = new DefaultListModel<>();
         setLayout(new BorderLayout());
         setupPanel();
-        // Load events immediately when panel is created
+
         refreshLists();
     }
 
     public void refreshLists() {
-        // Use SwingWorker to prevent UI freezing
+     
         SwingWorker<Void, Void> worker = new SwingWorker<>() {
             @Override
             protected Void doInBackground() {
@@ -135,7 +135,7 @@ public class AdminDashboardPanel extends JPanel {
 
     private void setupPanel() {
         try {
-            // Back Button
+           
             JButton backButton = new JButton("LOG OUT");
             backButton.setFont(new Font("Monospace", Font.BOLD, 14));
             backButton.addActionListener(e -> mainFrame.switchToPanel("Initial"));
@@ -144,7 +144,7 @@ public class AdminDashboardPanel extends JPanel {
             JPanel topPanel = new JPanel(new BorderLayout());
             topPanel.add(backButton, BorderLayout.WEST);
 
-            // Header Label
+            
             JLabel adminDashboardLabel = new JLabel(" ACTIVITY MANAGEMENT");
             adminDashboardLabel.setHorizontalAlignment(SwingConstants.CENTER);
             adminDashboardLabel.setFont(new Font("Arial", Font.BOLD, 28));
@@ -154,13 +154,12 @@ public class AdminDashboardPanel extends JPanel {
             adminDashboardLabel.setBorder(BorderFactory.createEmptyBorder(20, 10, 20, 10));
             topPanel.add(adminDashboardLabel, BorderLayout.CENTER);
 
-            // Main activity panel with grid layout
+           
             JPanel activityPanel = new JPanel(new GridLayout(1, 2));
 
-            // Pending Activities Section
+           
             JPanel pendingPanel = createPendingPanel();
-            
-            // Approved Activities Section
+          
             JPanel approvedPanel = createApprovedPanel();
 
             activityPanel.add(pendingPanel);
@@ -169,7 +168,7 @@ public class AdminDashboardPanel extends JPanel {
             add(topPanel, BorderLayout.NORTH);
             add(activityPanel, BorderLayout.CENTER);
 
-            // Add refresh button
+           
             JButton refreshButton = new JButton("Refresh Lists");
             refreshButton.addActionListener(e -> refreshLists());
             add(refreshButton, BorderLayout.SOUTH);
@@ -202,7 +201,7 @@ public class AdminDashboardPanel extends JPanel {
         JScrollPane pendingScroll = new JScrollPane(pendingList);
         pendingScroll.setPreferredSize(new Dimension(200, 300));
 
-        // Action Buttons
+     
         JButton approveButton = new JButton("Approve");
         approveButton.setFont(new Font("Arial", Font.BOLD, 16));
         approveButton.setBackground(Color.YELLOW);
